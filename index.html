@@ -4,12 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- === START: SEO & NAME CHANGES === -->
+    <!-- === UPDATED FOR GOOGLE SEO & NEW NAME === -->
     <title>Questify AI: Your Smart AI Question Solver & Quiz Companion</title>
     <meta name="description" content="Questify AI is a free tool to get instant answers for your homework, solve complex problems, and play fun quizzes. Your ultimate AI learning partner.">
     <meta name="keywords" content="Questify AI, AI solver, quiz app, homework helper, question answer AI, math solver, free learning app">
     <!-- Your Google Site Verification Tag would go here if you have it -->
-    <!-- === END: SEO & NAME CHANGES === -->
 
     <link rel="manifest" href="/manifest.json">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
@@ -76,7 +75,27 @@
         .loading { display: none; text-align: center; padding: 30px; }
         .loading-spinner { width: 32px; height: 32px; border: 3px solid #f2f2f7; border-top: 3px solid #007AFF; border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto 15px; }
         @keyframes spin { to { transform: rotate(360deg); } }
-        .result-card { background: white; border-radius: 16px; padding: 20px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); display: none; margin-top: 20px; }
+        
+        /* === START: UPDATED RESULT BOX STYLE === */
+        .result-card {
+            display: none;
+            margin-top: 25px; /* Added space from the button */
+            padding: 25px; /* Increased padding */
+            background: #ffffff;
+            border: 1px solid #e8e8e8; /* Added a subtle border */
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            min-height: 150px; /* Ensures a minimum height */
+            text-align: left; /* Aligns answer text to the left */
+        }
+        #resultContent {
+            line-height: 1.7; /* Better line spacing for readability */
+            white-space: pre-wrap; /* Respects newlines from the AI response */
+            word-wrap: break-word; /* Prevents long words from overflowing */
+            color: #333;
+        }
+        /* === END: UPDATED RESULT BOX STYLE === */
+
         #historyView .history-item { background: #fff; border: 1px solid #eee; padding: 15px; border-radius: 12px; margin-bottom: 10px; cursor: pointer; transition: box-shadow 0.2s; }
         #historyView .history-item:hover { box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
         #historyView .history-question { font-weight: 600; margin-bottom: 5px; color: #333; }
@@ -103,6 +122,45 @@
         #quizView .results { display: none; text-align: center; }
         #quizView .score-display { font-size: 1.8em; font-weight: 700; color: #6b48ff; }
         @media (max-width: 768px) { #quizView .options-grid { grid-template-columns: 1fr; } }
+        
+        /* === START: NEW SEO CONTENT BLOCK STYLE === */
+        .seo-content-block {
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 1px solid #ddd;
+            color: #555;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+        .seo-content-block h2 {
+            color: #333;
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+        .seo-content-block h3 {
+            color: #1d1d1f;
+            font-size: 20px;
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+        .seo-content-block p {
+            margin-bottom: 15px;
+        }
+        .seo-content-block ul {
+            list-style-type: disc;
+            padding-left: 20px;
+            margin-bottom: 15px;
+        }
+        .seo-content-block li {
+            margin-bottom: 8px;
+        }
+        .seo-content-block .keyword-list {
+            background-color: #f8f8f8;
+            border: 1px solid #eee;
+            padding: 15px;
+            border-radius: 8px;
+        }
+        /* === END: NEW SEO CONTENT BLOCK STYLE === */
     </style>
 </head>
 <body>
@@ -208,6 +266,32 @@
                     </div>
                 </section>
             </div>
+            
+            <!-- === START: NEW SEO CONTENT BLOCK === -->
+            <div class="seo-content-block">
+                <h2>Explore Questify AI: Your Ultimate Learning Companion</h2>
+                <p>Welcome to <strong>Questify AI</strong>, the revolutionary free learning app designed to be your personal AI homework helper and quiz companion. Whether you are a student struggling with complex problems or a curious mind looking to expand your knowledge, Questify AI is the perfect tool for you. Our platform combines a powerful <strong>AI question solver</strong> with an engaging <strong>quiz game</strong> to create a comprehensive learning experience.</p>
+                
+                <h3>Instant Answers with Our AI Question Solver</h3>
+                <p>Are you stuck on a tricky math problem? Need a clear explanation for a science concept? Our <strong>AI solver</strong> is here to help. Simply type your question or upload a picture of your problem, and our advanced AI will provide you with a step-by-step solution instantly. Questify AI is more than just a simple answer machine; it's a powerful <strong>homework helper</strong> that explains the 'how' and 'why' behind every answer. This makes it an invaluable study tool for exam preparation and a reliable <strong>math problem solver</strong>. From algebra to calculus, our AI is trained to handle a wide range of subjects, making it the best free learning app for students of all ages.</p>
+                
+                <h3>Challenge Yourself with the Fun Quiz Game</h3>
+                <p>Learning is more effective when it's fun. That's why we created the <strong>Questify AI quiz game</strong>. Test your knowledge across various subjects, including general knowledge, science, and history. With multiple levels of difficulty, our quiz app is designed to challenge both beginners and experts. Track your score, beat the timer, and climb the ranks to become a true quiz master. This feature makes Questify AI not just a question answer AI, but also an interactive platform to reinforce learning and make studying enjoyable.</p>
+
+                <h3>Frequently Asked Questions (FAQ)</h3>
+                <ul>
+                    <li><strong>Is Questify AI a free learning app?</strong><br>Yes, Questify AI is completely free to use. We believe that everyone should have access to a quality AI-powered learning tool without any cost or hidden charges.</li>
+                    <li><strong>Can the AI solver handle questions from an image?</strong><br>Absolutely! Our <strong>AI question solver</strong> can analyze images. Just snap a picture of your question, and our AI will process it and provide a detailed solution. This is perfect for handwritten notes or problems from a textbook.</li>
+                    <li><strong>What subjects does the quiz game cover?</strong><br>Our quiz game features a wide range of topics, including a comprehensive <strong>general knowledge quiz</strong>, a challenging science quiz, and much more, making it a versatile study tool.</li>
+                </ul>
+
+                <h3>Related Search Keywords</h3>
+                <div class="keyword-list">
+                    <p>AI solver, quiz app, question answer AI, math solver, science quiz, general knowledge, homework helper, free learning app, study tool, AI-powered learning, exam preparation, instant answers, solve problems from picture, AI for students, online quiz game, educational app.</p>
+                </div>
+            </div>
+            <!-- === END: NEW SEO CONTENT BLOCK === -->
+
         </div>
     </div>
     
@@ -321,7 +405,6 @@
             handleProfileUpload(event) { const file = event.target.files[0]; if (!file || !file.type.startsWith('image/')) return; const reader = new FileReader(); reader.onloadend = () => { userAvatarBase64 = reader.result; this.profileImagePreview.src = userAvatarBase64; }; reader.readAsDataURL(file); },
             handleResetUser() { 
                 this.showConfirmation('Reset App?', 'This will clear your name, profile picture, solver history, and quiz progress. Are you sure?', 'Reset All', () => { 
-                    // UPDATED LOCALSTORAGE KEYS FOR NEW NAME
                     localStorage.removeItem('questifyUserName'); 
                     localStorage.removeItem('questifyUserAvatar'); 
                     localStorage.removeItem('solverHistory'); 
@@ -330,7 +413,6 @@
                 }, 'danger-btn'); 
             },
             checkUser() { 
-                // UPDATED LOCALSTORAGE KEY FOR NEW NAME
                 const userName = localStorage.getItem('questifyUserName'); 
                 if (userName) { 
                     this.welcomeScreen.style.display = 'flex'; 
@@ -342,7 +424,6 @@
             saveUser() { 
                 const userName = this.nameInput.value.trim(); 
                 if (userName) { 
-                    // UPDATED LOCALSTORAGE KEYS FOR NEW NAME
                     localStorage.setItem('questifyUserName', userName); 
                     if (userAvatarBase64) { 
                         localStorage.setItem('questifyUserAvatar', userAvatarBase64); 
@@ -358,7 +439,6 @@
                 const firstName = fullName.split(' ')[0]; 
                 const randomQuote = motivationalQuotes[Math.floor(Math.random() * motivationalQuotes.length)]; 
                 this.appSubtitle.innerHTML = `Welcome, ${firstName}! <br><span style="font-size: 0.85em; opacity: 0.85;">${randomQuote}</span>`; 
-                // UPDATED LOCALSTORAGE KEY FOR NEW NAME
                 const avatar = localStorage.getItem('questifyUserAvatar'); 
                 if (avatar) { 
                     this.headerProfilePic.src = avatar; 
@@ -370,7 +450,6 @@
             sendFeedbackEmail() { 
                 const feedbackText = this.feedbackTextarea.value.trim(); 
                 if (!feedbackText) { alert('Please describe your issue or feedback before sending.'); return; } 
-                // UPDATED NAME IN EMAIL SUBJECT
                 const subject = 'Feedback/Help Request from Questify AI'; 
                 const body = `User Feedback:\n\n${feedbackText}`; 
                 const mailtoLink = `mailto:Guptaranjeet9682@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`; 
@@ -387,7 +466,6 @@
                 if (view === 'quiz') { 
                     const quizDefaultTab = document.querySelector('.subject-tab[data-subject="general"]'); 
                     if (quizDefaultTab) quizDefaultTab.classList.add('active'); 
-                    // UPDATED NAME
                     this.appTitle.textContent = 'Questify AI Game'; 
                     this.quizView.style.display = 'block'; 
                     this.headerSwitchBtn.innerHTML = 'AI 💡 Solver'; 
@@ -465,7 +543,6 @@
             shuffleArray(array) { for (let i = array.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1));[array[i], array[j]] = [array[j], array[i]]; } return array; },
             showWelcome() { this.quizSection.style.display = 'none'; this.resultsSection.style.display = 'none'; this.welcomeModal.classList.add('visible'); const progress = this.loadProgress(); const levelData = this.quizQuestions.levels[progress.currentLevel]; this.welcomeStats.innerHTML = `<div class="welcome-stat"><strong>Current Level</strong><span>${progress.currentLevel + 1}/${this.quizQuestions.levels.length}</span></div><div class="welcome-stat"><strong>Next Question</strong><span>${progress.currentQuestionIndex + 1}/${levelData.questions.length}</span></div><div class="welcome-stat"><strong>Current Score</strong><span>${progress.score}</span></div><div class="welcome-stat"><strong>Level Difficulty</strong><span>${levelData.difficulty}</span></div>`; },
             loadProgress() {
-                // UPDATED LOCALSTORAGE KEY FOR NEW NAME
                 const saved = localStorage.getItem('questifyProgress');
                 if (saved) {
                     try {
@@ -478,7 +555,6 @@
                         }
                     } catch (e) {
                         console.error("Could not parse quiz progress. Resetting.", e);
-                        // UPDATED LOCALSTORAGE KEY FOR NEW NAME
                         localStorage.removeItem('questifyProgress');
                     }
                 }
@@ -486,7 +562,6 @@
             },
             saveProgress() { 
                 const p = { currentLevel: this.currentLevel, currentQuestionIndex: this.currentQuestionIndex, score: this.score }; 
-                // UPDATED LOCALSTORAGE KEY FOR NEW NAME
                 localStorage.setItem('questifyProgress', JSON.stringify(p)); 
             },
             startQuiz() { this.welcomeModal.classList.remove('visible'); this.quizSection.style.display = 'block'; this.loadProgress(); this.currentScoreEl.textContent = this.score; this.totalLevelsEl.textContent = this.quizQuestions.levels.length; this.startLevel(this.currentLevel); },
@@ -498,14 +573,12 @@
             revealAnswer(answer) { this.optionsContainer.querySelectorAll('.option').forEach(o => { o.classList.add('disabled'); if (o.textContent === answer) o.classList.add('correct'); }); this.nextBtn.style.display = 'block'; },
             nextQuestion() { this.currentQuestionIndex++; this.saveProgress(); this.loadQuestion(); },
             showResults() { 
-                // UPDATED LOCALSTORAGE KEY FOR NEW NAME
                 localStorage.removeItem('questifyProgress'); 
                 this.quizSection.style.display = 'none'; 
                 this.resultsSection.style.display = 'block'; 
                 this.finalScoreEl.textContent = `Your Final Score: ${this.score}`; 
             },
             restartQuiz() { 
-                // UPDATED LOCALSTORAGE KEY FOR NEW NAME
                 localStorage.removeItem('questifyProgress'); 
                 this.currentLevel = 0; 
                 this.currentQuestionIndex = 0; 
@@ -519,4 +592,3 @@
     </script>
 </body>
 </html>
---- END OF FILE editseo.html ---
