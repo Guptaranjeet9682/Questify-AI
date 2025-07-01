@@ -1,5 +1,25 @@
 {
-  "name": "Questify AI",
+  "name": "Questify",
   "short_name": "Questify",
-  ...
+  // ... baaki properties
+  "icons": [
+    {
+      "src": "/icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/512.png",  // <-- Yahan apne maskable icon ka sahi naam daalein
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
 }
