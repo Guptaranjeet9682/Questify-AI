@@ -4,16 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- === UPDATED FOR GOOGLE SEO & NEW NAME === -->
+    <!-- === SEO & NAME INFO === -->
     <title>Questify AI: Your Smart AI Question Solver & Quiz Companion</title>
     <meta name="description" content="Questify AI is a free tool to get instant answers for your homework, solve complex problems, and play fun quizzes. Your ultimate AI learning partner.">
     <meta name="keywords" content="Questify AI, AI solver, quiz app, homework helper, question answer AI, math solver, free learning app">
-    <!-- Your Google Site Verification Tag would go here if you have it -->
+    <!-- Your Google Site Verification Tag would go here -->
 
     <link rel="manifest" href="/manifest.json">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-        /* CSS styles are unchanged, they are the same as before */
+        /* === All CSS Styles, including new ones for the bookmark feature === */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Poppins', sans-serif; background: #f5f5f7; min-height: 100vh; color: #1d1d1f; position: relative; overflow-x: hidden; }
         #floatingHelpBtn { position: fixed; bottom: 20px; left: 20px; width: 50px; height: 50px; background: linear-gradient(135deg, #007AFF, #5856D6); color: white; border-radius: 50%; border: none; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: bold; box-shadow: 0 4px 12px rgba(0,0,0,0.2); cursor: pointer; z-index: 1000; transition: transform 0.2s ease; }
@@ -75,34 +75,15 @@
         .loading { display: none; text-align: center; padding: 30px; }
         .loading-spinner { width: 32px; height: 32px; border: 3px solid #f2f2f7; border-top: 3px solid #007AFF; border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto 15px; }
         @keyframes spin { to { transform: rotate(360deg); } }
-        
-        /* === START: UPDATED RESULT BOX STYLE === */
-        .result-card {
-            display: none;
-            margin-top: 25px; /* Added space from the button */
-            padding: 25px; /* Increased padding */
-            background: #ffffff;
-            border: 1px solid #e8e8e8; /* Added a subtle border */
-            border-radius: 16px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-            min-height: 150px; /* Ensures a minimum height */
-            text-align: left; /* Aligns answer text to the left */
-        }
-        #resultContent {
-            line-height: 1.7; /* Better line spacing for readability */
-            white-space: pre-wrap; /* Respects newlines from the AI response */
-            word-wrap: break-word; /* Prevents long words from overflowing */
-            color: #333;
-        }
-        /* === END: UPDATED RESULT BOX STYLE === */
-
-        #historyView .history-item { background: #fff; border: 1px solid #eee; padding: 15px; border-radius: 12px; margin-bottom: 10px; cursor: pointer; transition: box-shadow 0.2s; }
-        #historyView .history-item:hover { box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
-        #historyView .history-question { font-weight: 600; margin-bottom: 5px; color: #333; }
-        #historyView .history-date { font-size: 12px; color: #888; }
-        #historyView .history-answer { display: none; margin-top: 15px; padding-top: 15px; border-top: 1px solid #f0f0f0; line-height: 1.6; color: #555; }
-        #historyView .history-answer.visible { display: block; }
-        #historyView .history-controls { margin-bottom: 20px; text-align: right; }
+        .result-card { display: none; margin-top: 20px; padding: 25px; background: #ffffff; border: 1px solid #e8e8e8; border-radius: 16px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); min-height: 150px; text-align: left; }
+        #resultContent { line-height: 1.7; white-space: pre-wrap; word-wrap: break-word; color: #333; }
+        #historyView .history-item, #bookmarksView .history-item { background: #fff; border: 1px solid #eee; padding: 15px; border-radius: 12px; margin-bottom: 10px; cursor: pointer; transition: box-shadow 0.2s; }
+        #historyView .history-item:hover, #bookmarksView .history-item:hover { box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        #historyView .history-question, #bookmarksView .history-question { font-weight: 600; margin-bottom: 5px; color: #333; }
+        #historyView .history-date, #bookmarksView .history-date { font-size: 12px; color: #888; }
+        #historyView .history-answer, #bookmarksView .history-answer { display: none; margin-top: 15px; padding-top: 15px; border-top: 1px solid #f0f0f0; line-height: 1.6; color: #555; }
+        #historyView .history-answer.visible, #bookmarksView .history-answer.visible { display: block; }
+        #historyView .history-controls, #bookmarksView .history-controls { margin-bottom: 20px; text-align: right; }
         #quizView .quiz-container { background-color: rgba(255, 255, 255, 0.95); border-radius: 15px; padding: 2rem; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); }
         #quizView .quiz-info { display: flex; justify-content: space-between; margin-bottom: 1.5rem; font-weight: 600; }
         #quizView .timer { text-align: center; font-size: 1.2em; font-weight: 600; margin-bottom: 1.5rem; color: #6b48ff; }
@@ -122,45 +103,11 @@
         #quizView .results { display: none; text-align: center; }
         #quizView .score-display { font-size: 1.8em; font-weight: 700; color: #6b48ff; }
         @media (max-width: 768px) { #quizView .options-grid { grid-template-columns: 1fr; } }
-        
-        /* === START: NEW SEO CONTENT BLOCK STYLE === */
-        .seo-content-block {
-            margin-top: 40px;
-            padding-top: 30px;
-            border-top: 1px solid #ddd;
-            color: #555;
-            line-height: 1.8;
-            font-size: 15px;
-        }
-        .seo-content-block h2 {
-            color: #333;
-            font-size: 24px;
-            margin-bottom: 15px;
-        }
-        .seo-content-block h3 {
-            color: #1d1d1f;
-            font-size: 20px;
-            margin-top: 25px;
-            margin-bottom: 10px;
-        }
-        .seo-content-block p {
-            margin-bottom: 15px;
-        }
-        .seo-content-block ul {
-            list-style-type: disc;
-            padding-left: 20px;
-            margin-bottom: 15px;
-        }
-        .seo-content-block li {
-            margin-bottom: 8px;
-        }
-        .seo-content-block .keyword-list {
-            background-color: #f8f8f8;
-            border: 1px solid #eee;
-            padding: 15px;
-            border-radius: 8px;
-        }
-        /* === END: NEW SEO CONTENT BLOCK STYLE === */
+        /* Style for buttons inside the result card */
+        .result-action-btn { margin-top: 20px; padding: 8px 16px; background-color: #f0f0f0; border: 1px solid #ddd; border-radius: 8px; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 500; transition: background-color 0.2s; }
+        .result-action-btn:hover { background-color: #e0e0e0; }
+        .result-action-btn.bookmarked { background-color: #007AFF; color: white; border-color: #007AFF; }
+        .result-action-btn.bookmarked svg { fill: white; stroke: white; }
     </style>
 </head>
 <body>
@@ -210,6 +157,9 @@
                 <button class="subject-tab" data-view="solver" data-subject="math">Math</button>
                 <button class="subject-tab" data-view="solver" data-subject="science">Science</button>
                 <button class="subject-tab" data-view="history" aria-label="View Solver History"><span aria-hidden="true">📜</span> History</button>
+                <!-- === START: NEW BOOKMARKS TAB === -->
+                <button class="subject-tab" data-view="bookmarks" aria-label="View Bookmarks"><span aria-hidden="true">🔖</span> Bookmarks</button>
+                <!-- === END: NEW BOOKMARKS TAB === -->
             </div>
 
             <div id="solverView" class="view-container">
@@ -230,7 +180,15 @@
                     <a href="#" id="viewHistoryLink" style="font-weight: bold; color: #007AFF; text-decoration: none; font-size: 14px;">View History</a>
                 </p>
                 <div class="loading" id="loading"> <div class="loading-spinner"></div><p>AI is analyzing...</p> </div>
-                <div class="result-card" id="resultCard"> <div id="resultContent"></div> </div>
+                <div class="result-card" id="resultCard">
+                    <div id="resultContent"></div>
+                    <!-- === START: NEW BOOKMARK BUTTON === -->
+                    <button id="bookmarkBtn" class="result-action-btn" title="Bookmark this answer">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+                        <span>Bookmark</span>
+                    </button>
+                    <!-- === END: NEW BOOKMARK BUTTON === -->
+                </div>
             </div>
 
             <div id="historyView" class="view-container" style="display: none;">
@@ -240,6 +198,17 @@
                 <div id="historyList"></div>
                 <p id="noHistoryMessage" style="text-align:center; color: #888;">Your solved questions will appear here.</p>
             </div>
+
+            <!-- === START: NEW BOOKMARKS VIEW === -->
+            <div id="bookmarksView" class="view-container" style="display: none;">
+                <div class="history-controls">
+                    <button id="clearBookmarksBtn" class="modal-btn danger-btn" style="padding: 8px 15px; flex: none;">Clear All Bookmarks</button>
+                </div>
+                <div id="bookmarksList"></div>
+                <p id="noBookmarksMessage" style="text-align:center; color: #888;">Your bookmarked answers will appear here.</p>
+            </div>
+            <!-- === END: NEW BOOKMARKS VIEW === -->
+
             <div id="quizView" class="view-container" style="display: none;">
                  <div id="quiz-welcome-modal" class="overlay">
                     <div class="modal-content welcome-content">
@@ -266,32 +235,6 @@
                     </div>
                 </section>
             </div>
-            
-            <!-- === START: NEW SEO CONTENT BLOCK === -->
-            <div class="seo-content-block">
-                <h2>Explore Questify AI: Your Ultimate Learning Companion</h2>
-                <p>Welcome to <strong>Questify AI</strong>, the revolutionary free learning app designed to be your personal AI homework helper and quiz companion. Whether you are a student struggling with complex problems or a curious mind looking to expand your knowledge, Questify AI is the perfect tool for you. Our platform combines a powerful <strong>AI question solver</strong> with an engaging <strong>quiz game</strong> to create a comprehensive learning experience.</p>
-                
-                <h3>Instant Answers with Our AI Question Solver</h3>
-                <p>Are you stuck on a tricky math problem? Need a clear explanation for a science concept? Our <strong>AI solver</strong> is here to help. Simply type your question or upload a picture of your problem, and our advanced AI will provide you with a step-by-step solution instantly. Questify AI is more than just a simple answer machine; it's a powerful <strong>homework helper</strong> that explains the 'how' and 'why' behind every answer. This makes it an invaluable study tool for exam preparation and a reliable <strong>math problem solver</strong>. From algebra to calculus, our AI is trained to handle a wide range of subjects, making it the best free learning app for students of all ages.</p>
-                
-                <h3>Challenge Yourself with the Fun Quiz Game</h3>
-                <p>Learning is more effective when it's fun. That's why we created the <strong>Questify AI quiz game</strong>. Test your knowledge across various subjects, including general knowledge, science, and history. With multiple levels of difficulty, our quiz app is designed to challenge both beginners and experts. Track your score, beat the timer, and climb the ranks to become a true quiz master. This feature makes Questify AI not just a question answer AI, but also an interactive platform to reinforce learning and make studying enjoyable.</p>
-
-                <h3>Frequently Asked Questions (FAQ)</h3>
-                <ul>
-                    <li><strong>Is Questify AI a free learning app?</strong><br>Yes, Questify AI is completely free to use. We believe that everyone should have access to a quality AI-powered learning tool without any cost or hidden charges.</li>
-                    <li><strong>Can the AI solver handle questions from an image?</strong><br>Absolutely! Our <strong>AI question solver</strong> can analyze images. Just snap a picture of your question, and our AI will process it and provide a detailed solution. This is perfect for handwritten notes or problems from a textbook.</li>
-                    <li><strong>What subjects does the quiz game cover?</strong><br>Our quiz game features a wide range of topics, including a comprehensive <strong>general knowledge quiz</strong>, a challenging science quiz, and much more, making it a versatile study tool.</li>
-                </ul>
-
-                <h3>Related Search Keywords</h3>
-                <div class="keyword-list">
-                    <p>AI solver, quiz app, question answer AI, math solver, science quiz, general knowledge, homework helper, free learning app, study tool, AI-powered learning, exam preparation, instant answers, solve problems from picture, AI for students, online quiz game, educational app.</p>
-                </div>
-            </div>
-            <!-- === END: NEW SEO CONTENT BLOCK === -->
-
         </div>
     </div>
     
@@ -381,6 +324,13 @@
                 this.closeFeedbackModal = document.getElementById('closeFeedbackModal');
                 this.feedbackTextarea = document.getElementById('feedbackTextarea');
                 this.sendFeedbackBtn = document.getElementById('sendFeedbackBtn');
+
+                // === START: CACHE NEW BOOKMARK ELEMENTS ===
+                this.bookmarksView = document.getElementById('bookmarksView');
+                this.bookmarksList = document.getElementById('bookmarksList');
+                this.noBookmarksMessage = document.getElementById('noBookmarksMessage');
+                this.clearBookmarksBtn = document.getElementById('clearBookmarksBtn');
+                // === END: CACHE NEW BOOKMARK ELEMENTS ===
             },
             bindEvents() {
                 this.continueBtn.addEventListener('click', () => this.saveUser());
@@ -401,14 +351,20 @@
                 this.sendFeedbackBtn.addEventListener('click', () => this.sendFeedbackEmail());
                 this.helpModal.addEventListener('click', (e) => { if (e.target === this.helpModal) this.helpModal.classList.remove('visible'); });
                 this.feedbackModal.addEventListener('click', (e) => { if (e.target === this.feedbackModal) this.feedbackModal.classList.remove('visible'); });
+
+                // === START: BIND NEW BOOKMARK EVENTS ===
+                this.clearBookmarksBtn.addEventListener('click', () => this.clearBookmarks());
+                this.bookmarksList.addEventListener('click', (e) => this.toggleHistoryAnswer(e)); // Reuse the same function
+                // === END: BIND NEW BOOKMARK EVENTS ===
             },
             handleProfileUpload(event) { const file = event.target.files[0]; if (!file || !file.type.startsWith('image/')) return; const reader = new FileReader(); reader.onloadend = () => { userAvatarBase64 = reader.result; this.profileImagePreview.src = userAvatarBase64; }; reader.readAsDataURL(file); },
             handleResetUser() { 
-                this.showConfirmation('Reset App?', 'This will clear your name, profile picture, solver history, and quiz progress. Are you sure?', 'Reset All', () => { 
+                this.showConfirmation('Reset App?', 'This will clear your name, profile picture, history, bookmarks and quiz progress. Are you sure?', 'Reset All', () => { 
                     localStorage.removeItem('questifyUserName'); 
                     localStorage.removeItem('questifyUserAvatar'); 
                     localStorage.removeItem('solverHistory'); 
-                    localStorage.removeItem('questifyProgress'); 
+                    localStorage.removeItem('questifyProgress');
+                    localStorage.removeItem('questifyBookmarks'); // Also clear bookmarks
                     window.location.reload(); 
                 }, 'danger-btn'); 
             },
@@ -463,6 +419,8 @@
                 this.solverView.style.display = 'none'; 
                 this.quizView.style.display = 'none'; 
                 this.historyView.style.display = 'none'; 
+                this.bookmarksView.style.display = 'none'; // Hide bookmarks view by default
+
                 if (view === 'quiz') { 
                     const quizDefaultTab = document.querySelector('.subject-tab[data-subject="general"]'); 
                     if (quizDefaultTab) quizDefaultTab.classList.add('active'); 
@@ -476,7 +434,17 @@
                     this.historyView.style.display = 'block'; 
                     this.headerSwitchBtn.innerHTML = 'Play ❤️ Quiz'; 
                     this.renderHistory(); 
-                } else { 
+                } 
+                // === START: NEW BOOKMARKS VIEW LOGIC ===
+                else if (view === 'bookmarks') {
+                    activeTab.classList.add('active');
+                    this.appTitle.textContent = 'My Bookmarks';
+                    this.bookmarksView.style.display = 'block';
+                    this.headerSwitchBtn.innerHTML = 'Play ❤️ Quiz';
+                    this.renderBookmarks();
+                }
+                // === END: NEW BOOKMARKS VIEW LOGIC ===
+                else { 
                     activeTab.classList.add('active'); 
                     this.appTitle.textContent = 'Question Solver AI'; 
                     this.solverView.style.display = 'block'; 
@@ -486,9 +454,30 @@
             },
             showConfirmation(title, message, confirmText, onConfirm, confirmClass = 'confirm-btn') { this.modalTitle.textContent = title; this.modalMessage.textContent = message; this.modalConfirmBtn.textContent = confirmText; this.modalConfirmBtn.className = `modal-btn ${confirmClass}`; this.modalConfirmBtn.onclick = () => { this.confirmationModal.classList.remove('visible'); onConfirm(); }; this.confirmationModal.classList.add('visible'); },
             confirmExit() { this.thankYouOverlay.classList.add('visible'); setTimeout(() => { this.thankYouOverlay.classList.remove('visible'); this.mainAppContainer.style.display = 'none'; this.welcomeScreen.style.display = 'flex'; }, 1500); },
-            renderHistory() { let history = []; try { history = JSON.parse(localStorage.getItem('solverHistory') || '[]'); } catch (e) { console.error("Could not parse solver history. Resetting history.", e); localStorage.removeItem('solverHistory'); } this.noHistoryMessage.style.display = history.length === 0 ? 'block' : 'none'; this.historyList.innerHTML = history.map(item => `<div class="history-item"><div class="history-question">${item.question.substring(0, 100)}${item.question.length > 100 ? '...' : ''}</div><div class="history-date">${new Date(item.date).toLocaleString()}</div><div class="history-answer">${item.answer}</div></div>`).join(''); },
+            renderHistory() { let history = []; try { history = JSON.parse(localStorage.getItem('solverHistory') || '[]'); } catch (e) { console.error("Could not parse solver history. Resetting history.", e); localStorage.removeItem('solverHistory'); } this.noHistoryMessage.style.display = history.length === 0 ? 'block' : 'none'; this.historyList.innerHTML = history.map(item => `<div class="history-item" data-id="${item.date}"><div class="history-question">${item.question.substring(0, 100)}${item.question.length > 100 ? '...' : ''}</div><div class="history-date">${new Date(item.date).toLocaleString()}</div><div class="history-answer">${item.answer}</div></div>`).join(''); },
             toggleHistoryAnswer(e) { const item = e.target.closest('.history-item'); if (item) item.querySelector('.history-answer').classList.toggle('visible'); },
-            clearHistory() { this.showConfirmation('Clear History?', 'This will permanently delete all your saved questions and answers.', 'Delete All', () => { localStorage.removeItem('solverHistory'); this.renderHistory(); }, 'danger-btn'); }
+            clearHistory() { this.showConfirmation('Clear History?', 'This will permanently delete all your saved questions and answers.', 'Delete All', () => { localStorage.removeItem('solverHistory'); this.renderHistory(); }, 'danger-btn'); },
+
+            // === START: NEW BOOKMARK FUNCTIONS ===
+            renderBookmarks() {
+                let bookmarks = JSON.parse(localStorage.getItem('questifyBookmarks') || '[]');
+                this.noBookmarksMessage.style.display = bookmarks.length === 0 ? 'block' : 'none';
+                this.bookmarksList.innerHTML = bookmarks.map(item => `
+                    <div class="history-item" data-id="${item.date}">
+                        <div class="history-question">${item.question}</div>
+                        <div class="history-date">Bookmarked on: ${new Date(item.date).toLocaleString()}</div>
+                        <div class="history-answer">${item.answer}</div>
+                    </div>
+                `).join('');
+            },
+
+            clearBookmarks() {
+                this.showConfirmation('Clear Bookmarks?', 'This will permanently delete all your bookmarked answers.', 'Delete All', () => {
+                    localStorage.removeItem('questifyBookmarks');
+                    this.renderBookmarks();
+                }, 'danger-btn');
+            },
+            // === END: NEW BOOKMARK FUNCTIONS ===
         };
 
         const SolverApp = {
@@ -517,8 +506,7 @@
                     const data = await response.json();
                     if (!data.candidates || data.candidates.length === 0) { throw new Error("No response from AI. The content may have been blocked."); }
                     const answer = data.candidates[0].content.parts[0].text;
-                    this.resultContentEl.innerHTML = answer.replace(/\n/g, '<br>');
-                    this.resultCardEl.style.display = 'block';
+                    this.displayResult(historyQuestion, answer); // Use helper function
                     this.saveToHistory(historyQuestion, answer);
                 } catch (error) {
                     console.error('Error:', error);
@@ -531,7 +519,40 @@
                 }
             },
             saveToHistory(question, answer) { let history = []; try { history = JSON.parse(localStorage.getItem('solverHistory') || '[]'); } catch (e) { localStorage.removeItem('solverHistory'); } const newEntry = { question, answer, date: new Date().toISOString() }; history.unshift(newEntry); localStorage.setItem('solverHistory', JSON.stringify(history.slice(0, 20))); },
-            setActiveSubject(subject) { this.questionInputEl.placeholder = `Type your ${subject} question here...`; }
+            setActiveSubject(subject) { this.questionInputEl.placeholder = `Type your ${subject} question here...`; },
+            
+            // === START: NEW BOOKMARK HELPER FUNCTIONS ===
+            displayResult(question, answer) {
+                this.resultContentEl.innerHTML = answer.replace(/\n/g, '<br>');
+                this.resultCardEl.style.display = 'block';
+                
+                const bookmarkBtn = document.getElementById('bookmarkBtn');
+                bookmarkBtn.classList.remove('bookmarked'); // Reset style
+                const bookmarkId = new Date().toISOString(); // Unique ID for the bookmark
+                
+                // Check if already bookmarked to set initial state (optional but good)
+                let bookmarks = JSON.parse(localStorage.getItem('questifyBookmarks') || '[]');
+                const isAlreadyBookmarked = bookmarks.some(b => b.question === question && b.answer === answer);
+                
+                if (isAlreadyBookmarked) {
+                    bookmarkBtn.classList.add('bookmarked');
+                    bookmarkBtn.onclick = null;
+                } else {
+                    bookmarkBtn.onclick = () => {
+                        this.saveBookmark(question, answer, bookmarkId);
+                        bookmarkBtn.classList.add('bookmarked');
+                        bookmarkBtn.onclick = null; // Prevent multiple clicks
+                    };
+                }
+            },
+
+            saveBookmark(question, answer, bookmarkId) {
+                let bookmarks = JSON.parse(localStorage.getItem('questifyBookmarks') || '[]');
+                const newEntry = { question, answer, date: bookmarkId };
+                bookmarks.unshift(newEntry);
+                localStorage.setItem('questifyBookmarks', JSON.stringify(bookmarks));
+            },
+            // === END: NEW BOOKMARK HELPER FUNCTIONS ===
         };
 
         const QuizApp = {
@@ -591,8 +612,4 @@
     })();
     </script>
 </body>
-    <script type='text/javascript' src='//pl27053600.profitableratecpm.com/6c/41/aa/6c41aa3451ef44c5c2b71edca1c38e01.js'></script>
 </html>
-<script type="text/javascript"> 	atOptions = { 		'key' : '1e5a4c16426fb126bbc0046c80a85af8', 		'format' : 'iframe', 		'height' : 50, 		'width' : 320, 		'params' : {} 	}; </script> <script type="text/javascript" src="//www.highperformanceformat.com/1e5a4c16426fb126bbc0046c80a85af8/invoke.js"></script>
-
-<script async="async" data-cfasync="false" src="//pl27053638.profitableratecpm.com/6ec0577c5d938bb16b609e918a63e6e0/invoke.js"></script>
