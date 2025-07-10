@@ -2,29 +2,29 @@
 const fetch = require('node-fetch');
 
 module.exports = async (req, res) => {
+    if (req.method !== 'POST') {
+        return res.status(405).json({ message: 'Only POST requests are allowed.' });
+    }
     try {
         const apiKey = process.env.GEMINI_API_KEY;
-
         if (!apiKey) {
-          // Agar API Key nahi mili to yeh error bhejega
-          return res.status(500).json({ error: { message: 'API Key server par nahi mili. Kripya Vercel Environment Variables check karein.' }});
+            return res.status(500).json({ error: 'API key is not configured on the server.' });
         }
-
-        const googleResponse = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${apiKey}`, {
+        const requestBody = req.body;
+        const googleApiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${apiKey}`;
+        const googleResponse = await fetch(googleApiUrl, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(req.body),
+            body: JSON.stringify(requestBody),
         });
-
-        // Agar Google se koi error aaye to use aage bhejega
-        if (!googleResponse.ok) {
-          const errorData = await googleResponse.json();
-          return res.status(googleResponse.status).json(errorData);
-        }
-
         const data = await googleResponse.json();
+        if (!googleResponse.ok) {
+            console.error('Google API Error:', data);
+            return res.status(googleResponse.status).json(data);
+        }
         res.status(200).json(data);
     } catch (error) {
-        res.status(500).json({ error: { message: 'Server par ek anjaan error aayi.' }});
+        console.error('Server-side error:', error);
+        res.status(500).json({ error: 'An internal server error occurred.' });
     }
 };
